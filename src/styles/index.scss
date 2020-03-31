@@ -1,3 +1,11 @@
+@import './variables.scss';
+// @import './mixin.scss';
+@import './element-ui.scss';
+@import './animation.scss';
+
+* {
+	box-sizing: border-box;
+}
 .pointer {
 	cursor: pointer;
 }
