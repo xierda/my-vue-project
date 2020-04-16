@@ -1,3 +1,13 @@
+
+.el-header,
+.el-main {
+	padding: 0;
+}
+
 .el-scrollbar__thumb {
 	display: none;
 }
+
+// .el-loading-mask {
+// 	background-color: $panel-bg-color;
+// }
