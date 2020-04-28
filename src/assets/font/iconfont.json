@@ -1,0 +1,51 @@
+{
+  "id": "1360317",
+  "name": "my-icon",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "自己测试使用iconfont",
+  "glyphs": [
+    {
+      "icon_id": "12759306",
+      "name": "logo",
+      "font_class": "logo",
+      "unicode": "e8b6",
+      "unicode_decimal": 59574
+    },
+    {
+      "icon_id": "2501796",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e6c6",
+      "unicode_decimal": 59078
+    },
+    {
+      "icon_id": "2506450",
+      "name": "导出Excel",
+      "font_class": "daochuExcel",
+      "unicode": "e6c9",
+      "unicode_decimal": 59081
+    },
+    {
+      "icon_id": "2469898",
+      "name": "关闭输入",
+      "font_class": "guanbishuru",
+      "unicode": "e6a8",
+      "unicode_decimal": 59048
+    },
+    {
+      "icon_id": "2469901",
+      "name": "密码",
+      "font_class": "mima",
+      "unicode": "e6ab",
+      "unicode_decimal": 59051
+    },
+    {
+      "icon_id": "2469902",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e6ac",
+      "unicode_decimal": 59052
+    }
+  ]
+}
