@@ -13,6 +13,13 @@ import store from './store'
 
 import './icons'
 
+console.log(process.env.NODE_ENV)
+
+if (process.env.NODE_ENV === 'production') {
+  const { mockXHR } = require('../mock')
+  mockXHR()
+}
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
