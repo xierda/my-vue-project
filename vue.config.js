@@ -6,6 +6,7 @@ function resolve(dir) {
 }
 
 module.exports = {
+  // mode: 'development',
   
   // publicPath: '',
   //  build 时生成的生产环境构建文件的目录

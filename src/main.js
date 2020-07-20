@@ -13,6 +13,9 @@ import store from './store'
 
 import './icons'
 
+// Globally register all `_base`-prefixed components
+import '@/components/_globals'
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
