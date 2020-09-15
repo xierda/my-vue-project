@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import lodash from 'lodash'
 
 import 'normalize.css/normalize.css'
 
@@ -19,6 +20,8 @@ import '@/components/_globals'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
+
+Vue.prototype._ = lodash
 
 new Vue({
   router,
