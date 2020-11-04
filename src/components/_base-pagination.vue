@@ -30,7 +30,9 @@ export default {
     },
     pageSizes: {
       type: Array,
-      default: [20, 50, 100, 200]
+      default: () => {
+        return [20, 50, 100, 200]
+      }
     },
     small: {
       type: Boolean,
