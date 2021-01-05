@@ -8,6 +8,14 @@
 	display: none;
 }
 
+::-webkit-scrollbar {
+	display: none;
+}
+
+.el-scrollbar__view {
+	height: 100%;
+}
+
 // .el-loading-mask {
 // 	background-color: $panel-bg-color;
 // }

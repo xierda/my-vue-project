@@ -1,7 +1,10 @@
+import router from '@/router'
 import axios from 'axios'
-import { MessageBox, Message } from 'element-ui'
+import { MessageBox, Message, Notification } from 'element-ui'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import { getToken, removeToken, getTokenTemporary } from '@/utils/auth'
+import { getLocalStorage } from '@/utils'
+import { cacheNameDataFun } from '@/cache'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
@@ -10,8 +13,9 @@ const service = axios.create({
 
 service.interceptors.request.use(
   config => {
-    if (store.getters.token) {
-      config.headers['X-Token'] = getToken()
+    if (getLocalStorage(cacheNameDataFun().userInfo)) {
+      config.headers['userName'] = getLocalStorage(cacheNameDataFun().userInfo).username || ''
+      config.headers['token'] = getToken() || getTokenTemporary() || ''
     }
     return config
   },
@@ -23,14 +27,18 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   response => {
+    // console.log(response)
     const res = response.data
+    const urlArr = response.config.url.split('/')
 
-    if (res.code !== 20000) {
-      Message({
-        message: res.message || 'Error',
-        type: 'error',
-        duration: 5 * 1000
-      })
+    if (res.code !== 1) {
+
+      if (urlArr[urlArr.length - 1] !== 'getUnitChild') {
+        Notification({
+          message: res.message || 'Error',
+          type: 'error'
+        })
+      }
 
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
@@ -50,6 +58,15 @@ service.interceptors.response.use(
     return res
   },
   error => {
+    if ( String(error).indexOf('401') !== -1) {
+      removeToken()
+      Notification({
+        message: '登录失效，请重新登录',
+        type: 'error'
+      })
+      router.push('/login')
+      return
+    }
     console.log('err' + error)
     Message({
       message: error.message,

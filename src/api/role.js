@@ -1,38 +1,51 @@
 import request from '@/utils/request'
+import config from '@/config'
+const modelUrl = config.baseUrl + 'sensitivearea/system/role/'
 
-export function getRoutes() {
+export const selectAllRoles = params => {
   return request({
-    url: '/vue-element-admin/routes',
-    method: 'get'
-  })
-}
+    url: modelUrl + 'selectAllRoles',
+    method: 'get',
+    params
+  });
+};
 
-export function getRoles() {
+export const getRoleInfoByRoleidV1 = params => {
   return request({
-    url: '/vue-element-admin/roles',
-    method: 'get'
-  })
-}
+    url: modelUrl + 'getRoleInfoByRoleid/v1',
+    method: 'get',
+    params
+  });
+};
 
-export function addRole(data) {
+export const getRoleInfoByRoleid = params => {
   return request({
-    url: '/vue-element-admin/role',
+    url: modelUrl + 'getRoleInfoByRoleid/v2',
+    method: 'get',
+    params
+  });
+};
+
+export const getCreateRoleInfo = params => {
+  return request({
+    url: modelUrl + 'getCreateRoleInfo/v3',
+    method: 'get',
+    params
+  });
+};
+
+export const updateOneRole = data => {
+  return request({
+    url: modelUrl + 'updateOneRole',
     method: 'post',
     data
-  })
-}
+  });
+};
 
-export function updateRole(id, data) {
+export const addOneRole = data => {
   return request({
-    url: `/vue-element-admin/role/${id}`,
-    method: 'put',
+    url: modelUrl + 'addOneRole',
+    method: 'post',
     data
-  })
-}
-
-export function deleteRole(id) {
-  return request({
-    url: `/vue-element-admin/role/${id}`,
-    method: 'delete'
-  })
-}
+  });
+};

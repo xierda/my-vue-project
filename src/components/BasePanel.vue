@@ -3,11 +3,11 @@
     <header v-if="showHeader" class="base-panel-header">
       <slot name="header">
         <span @click="$emit('handle-header-left')" :class="{'pointer': headerLeftPointer}">
-          <svg-icon v-if="showHeaderLeftIcon" class="show-icon theme-title" :icon-class="headerLeftIcon"/>
+          <i v-if="showHeaderLeftIcon" class="show-icon theme-title iconfont" :class="`icon-${headerLeftIcon}`"/>
           <span>{{ title }}</span>
         </span>
-        <span @click="$emit('close-panel')" :title="headerRightTitle" class="handle-icon pointer">
-          <svg-icon :icon-class="headerRightIcon"/>
+        <span v-if="showHeaderRightIcon" @click="$emit('close-panel')" :title="headerRightTitle" class="handle-icon pointer">
+          <i class="iconfont" :class="`icon-${headerRightIcon}`"/>
         </span>
       </slot>
     </header>
@@ -57,6 +57,10 @@ export default {
       type: Boolean,
       default: true
     },
+    showHeaderRightIcon: {
+      type: Boolean,
+      default: true
+    },
     headerLeftIcon: {
       type: String,
       default: 'data'
@@ -75,7 +79,7 @@ export default {
     },
     footerHeight: {
       type: Number,
-      default: 40
+      default: 56
     }
   },
   data () {
@@ -95,8 +99,8 @@ export default {
   bottom: 0;
   right: 0;
   background: #fff;
-  box-shadow:-4px 0px 10px 0px rgba(107,108,124,0.2);
-  border-radius:6px 0px 0px 6px;
+	box-shadow: 0px 4px 10px 0px rgba(107, 108, 124, 0.08);
+  border-radius: 4px;
   z-index: 10;
 
   .base-panel-header {
@@ -119,23 +123,19 @@ export default {
   .base-panel-content {
     height: calc(100% - 96px);
     padding: 16px;
-    
+
     /deep/ .el-scrollbar__view {
       height: 100%;
       overflow-x: hidden;
     }
   }
   .base-panel-content-noh, .base-panel-content-nof {
-    height: calc(100% - 40px);
+    height: calc(100% - 56px);
   }
   .base-panel-content-noh-nof {
     height: 100%;
   }
 
-  .base-panel-footer {
-    height: 40px;
-    border-top: 1px solid #dadbdc;
-  }
   .base-panel-footer-line {
     border-top: 1px solid #dadbdc;
   }

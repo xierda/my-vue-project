@@ -1,14 +1,10 @@
+@import './reset.scss';
 @import './variables.scss';
 @import './mixin.scss';
 @import './element-ui.scss';
 @import './animation.scss';
-
-ol,
-ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
+@import './common.scss';
+@import './iconfont.scss';
 
 html {
 	font-size: 100%;
@@ -38,4 +34,28 @@ body,
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
+	color: $panel-word-color;
+}
+
+.content-page {
+	height: 100%;
+	padding: 16px;
+	overflow: hidden;
+}
+
+.search-wrap {
+	min-height: 64px;
+	width: 100%;
+	background: $mainTextColor;
+	padding-top: 16px;
+	border-radius:4px;
+	box-shadow: 0px 4px 10px 0px rgba(107,108,124,0.08);
+}
+
+.table-wrap {
+	height: calc(100% - 80px);
+	background-color: $mainTextColor;
+	box-shadow: 0px 4px 10px 0px rgba(107,108,124,0.08);
+	padding: 16px;
+	border-radius: 4px;
 }
