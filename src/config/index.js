@@ -5,7 +5,8 @@ export default {
   title: '嘉陵江流域',
   systemName: 'Jljlx',
   firstPage: '/map-basicInfo',
-  baseUrl: 'http://192.168.6.178:18001/',
+  baseUrl: 'http://192.168.0.181:10100/',
+  systemUrl: 'drinkwater/',
   mapKey: '9d373acb8e2e26d638cc96333ea5feec',
   menus: [
     {

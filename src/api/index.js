@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 import config from '@/config'
 
-const modelUrl = config.baseUrl + 'sensitivearea/system/xzqhApi/getXzqhs'
+const modelUrl = `${config.baseUrl}${config.systemUrl}system/xzqhApi/getXzqhs`
 
 /**
  * 获取全部的枚举值

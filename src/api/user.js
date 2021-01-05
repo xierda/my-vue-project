@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 import config from '@/config'
 
-const modelUrl = config.baseUrl + 'sensitivearea/system/userApi/'
+const modelUrl = `${config.baseUrl}${config.systemUrl}system/unitApi/`
 
 export const getVerificationCode = params => {
   return request({

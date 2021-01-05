@@ -1,6 +1,7 @@
 import request from '@/utils/request'
 import config from '@/config'
-const modelUrl = config.baseUrl + 'sensitivearea/system/role/'
+
+const modelUrl = `${config.baseUrl}${config.systemUrl}system/role/`
 
 export const selectAllRoles = params => {
   return request({
