@@ -4,7 +4,7 @@
   <!-- <el-header height="56px">
     <el-menu class="aside-menu" @open="handleOpen" @close="handleClose" :collapse="collapseState">
       <el-menu-item class="border-bottem">
-        <svg-icon class="menu-icon" icon-class="fanhuishouye"/>
+        <SvgIcon class="menu-icon" icon-class="fanhuishouye"/>
         <span slot="title">返回首页</span>
       </el-menu-item>
     </el-menu>
@@ -17,20 +17,20 @@
       unique-opened
       class="aside-menu" @open="handleOpen" @close="handleClose" :collapse="collapseState">
       <!-- <el-menu-item class="border-bottem">
-        <svg-icon class="menu-icon" icon-class="fanhuishouye"/>
+        <SvgIcon class="menu-icon" icon-class="fanhuishouye"/>
         <span slot="title">返回首页</span>
       </el-menu-item> -->
 
       <template v-for="(item, index) in menus">
 
         <el-menu-item v-if="!item.moudles.length" :index="item.name" :key="index">
-          <svg-icon class="menu-icon" :icon-class="item.iconclass"/>
+          <SvgIcon class="menu-icon" :icon-class="item.iconclass"/>
           <span slot="title">{{ item.mkname }}</span>
         </el-menu-item>
 
         <el-submenu v-if="item.moudles.length" :index="item.name" :key="index">
           <template slot="title">
-            <svg-icon class="menu-icon" :icon-class="item.iconclass"/>
+            <SvgIcon class="menu-icon" :icon-class="item.iconclass"/>
             <span slot="title">{{ item.mkname }}</span>
           </template>
 
@@ -50,8 +50,8 @@
   </el-main>
   <el-footer class="aside-footer" height="48px">
     <span @click="handle" class="pointer">
-      <svg-icon v-if="!collapseState" icon-class="menu-fold"/>
-      <svg-icon v-if="collapseState" icon-class="menu-unfold"/>
+      <SvgIcon v-if="!collapseState" icon-class="menu-fold"/>
+      <SvgIcon v-if="collapseState" icon-class="menu-unfold"/>
     </span>
   </el-footer>
 </el-container>

@@ -2,7 +2,7 @@
   <div class="header-nav">
     <ul class="nav-wrap">
       <li @click="handleSelect(index)" v-for="(item, index) in menus" :key="index" :class="{'active':activeNav === index}" class="nav-item pointer">
-        <!-- <svg-icon :icon-class="item.iconClass"/> -->
+        <!-- <SvgIcon :icon-class="item.iconClass"/> -->
         <router-link class="nav-title" :to="`/${item.path}`">{{ item.mkname }}</router-link>
       </li>
     </ul>

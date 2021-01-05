@@ -2,20 +2,20 @@
   <div class="header-page">
     <el-row class="header-layout" type="flex" justify="space-between">
       <el-col :span="8" class="header-left">
-        <svg-icon class="app-logo" icon-class="logo"/>
+        <SvgIcon class="app-logo" icon-class="logo"/>
         <h1 class="header-title">{{ website.title }}</h1>
       </el-col>
 
       <el-col :span="16" class="header-right">
         <!-- <TheHeaderNav/> -->
         <!-- <el-badge class="header-message" :value="2">
-          <svg-icon icon-class="message"/>
+          <SvgIcon icon-class="message"/>
         </el-badge> -->
         <!-- <span class="xinxikanban pointer">
-          <svg-icon icon-class="xinxikanban"/>
+          <SvgIcon icon-class="xinxikanban"/>
         </span> -->
         <span @click="handleHf" class="huanfu pointer" :class="{'active': hfState}">
-          <svg-icon icon-class="huanfu"/>
+          <SvgIcon icon-class="huanfu"/>
           <!-- <i class="iconfont icon-huanfu"></i> -->
         </span>
         <!-- <div class="header-avatar">

@@ -1,4 +1,4 @@
-# jljly-system
+# my-vue-project
 
 ## Project setup
 ```

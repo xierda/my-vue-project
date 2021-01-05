@@ -2,7 +2,7 @@
   <div class="swapper">
     <div class="index-nav header-page">
       <div class="logo">
-        <svg-icon class="app-logo" icon-class="logo"/>
+        <SvgIcon class="app-logo" icon-class="logo"/>
         <span>{{ config.title }}</span>
       </div>
     </div>
