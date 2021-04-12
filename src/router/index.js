@@ -6,6 +6,14 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/test',
+    name: 'Test',
+    component: () => import('@/views/Test.vue'),
+    meta: {
+      isAuth: false
+    }
+  },
+  {
     path: '/login',
     name: 'Login',
     // component: () => import('@/views/map/map.vue'),

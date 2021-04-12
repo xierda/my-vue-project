@@ -21,7 +21,8 @@ router.beforeEach((to, form, next) => {
       next()
       return
     }
-    next('/login')
+    // next('/login')
+    next('/test')
   }
 
   // if (meta.isAuth) {
