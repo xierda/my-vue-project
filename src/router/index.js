@@ -10,6 +10,7 @@ const routes = [
     name: 'Test',
     component: () => import('@/views/Test.vue'),
     meta: {
+      requiredLogin: false,
       isAuth: false
     }
   },
@@ -19,6 +20,7 @@ const routes = [
     // component: () => import('@/views/map/map.vue'),
     component: () => import('@/views/Login.vue'),
     meta: {
+      redirectAlreadyLogin: true,
       isAuth: false
     }
   },
