@@ -2,6 +2,11 @@
   <div class="test-wrap">
 
     <!-- 自定义指令 -->
+    <div style="marginBottom: 50px;">
+      <button v-has="'add'">增加</button>
+      <button v-has="'edit'">编辑</button>
+      <button v-has="'delete'">删除</button>
+    </div>
     <!-- <input v-focus type="text">
     <div id="baseexample">
       <p>Scroll down the page</p>
@@ -34,6 +39,7 @@
 
 <script>
 import TestChild from './TestChild'
+import has from '@/directive/has.js'
 export default {
   components: {
     TestChild
@@ -49,6 +55,7 @@ export default {
     }
   },
   directives: {
+    has,
     focus: {
       // 指令的定义
       inserted: function (el) {

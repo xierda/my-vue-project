@@ -8,6 +8,13 @@ import getters from './getters'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {
+    buttonPermission: {
+      add: true,
+      edit: false,
+      delete: false,
+    },
+  },
   modules: {
     user,
     common
