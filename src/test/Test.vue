@@ -34,25 +34,70 @@
     <TestChild :childValue="childValue" :childValue2="childValue2" @update:childValue="childValue = $event"/>
     <TestChild :childValue.sync="childValue" :childValue2.sync="childValue2"/>
     <TestChild v-bind.sync="obj"/>
+
+    <!-- 组件传值 -->
+    <TestUsers style="marginTop:20px;" :fData="sonProps" :users="users" @on-click="onUserClick"/>
+    <p>子组件的值：{{usersText}}</p>
+
+    <!-- <p>{{provideTest}}</p> -->
+
+    <TestA style="marginTop:20px;"/>
+    <TestB style="marginTop:20px;"/>
+    <TestC/>
+
+    <child-com1
+      style="marginTop:20px;"
+      :foo="foo"
+      :boo="boo"
+      :coo="coo"
+      :doo="doo"
+      title="前端工匠"
+      @handleTest="handleTest"
+    ></child-com1>
   </div>
 </template>
 
 <script>
+const childCom1 = () => import("./childCom1.vue");
 import TestChild from './TestChild'
+import TestUsers from './TestUsers'
+import TestA from './TestA'
+import TestB from './TestB'
+import TestC from './TestC'
 import has from '@/directive/has.js'
 export default {
   components: {
-    TestChild
+    TestChild,
+    TestUsers,
+    TestA,
+    TestB,
+    TestC,
+    childCom1,
   },
   data() {
     return {
+      sonProps: {
+        a: 1,
+        b: 2
+      },
+      foo: "Javascript",
+      boo: "Html",
+      coo: "CSS",
+      doo: "Vue",
       childValue: 'childValue',
       childValue2: 'childValue2',
       obj: {
         childValue: 'childValue',
         childValue2: 'childValue2',
       },
+      users: [
+        'lxq', 'lqe'
+      ],
+      usersText: ''
     }
+  },
+  provide: {
+    provideTest: 'pretty'
   },
   directives: {
     has,
@@ -70,6 +115,13 @@ export default {
     }
   },
   methods: {
+    handleTest() {
+      console.log(1)
+    },
+    onUserClick(e) {
+      console.log(this.sonProps)
+      this.usersText = e
+    },
     outClick() {
       console.log('outDiv')
     },

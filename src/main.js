@@ -23,6 +23,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 
 Vue.prototype._ = lodash
+Vue.prototype.GlobalEvent = new Vue()
 
 new Vue({
   router,
