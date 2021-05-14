@@ -1,10 +1,42 @@
 import router from '@/router'
 import axios from 'axios'
+import Qs from 'qs'
 import { MessageBox, Message, Notification } from 'element-ui'
 import store from '@/store'
 import { getToken, removeToken, getTokenTemporary } from '@/utils/auth'
 import { getLocalStorage } from '@/utils'
 import { cacheNameDataFun } from '@/cache'
+
+// 正在请求的
+const pendingRequest = new Map();
+
+// 生成请求 Key
+function generateReqKey(config) {
+  const { method, url, params, data } = config;
+  return [method, url, Qs.stringify(params), Qs.stringify(data)].join(
+    "&"
+  );
+}
+// 把当前请求信息添加到pendingRequest对象中
+function addPendingRequest(config) {
+  const requestKey = generateReqKey(config);
+  config.cancelToken =
+    config.cancelToken ||
+    new axios.CancelToken((cancel) => {
+      if (!pendingRequest.has(requestKey)) {
+        pendingRequest.set(requestKey, cancel);
+      }
+    });
+}
+// 检查是否存在重复请求，若存在则取消已发的请求
+function removePendingRequest(config) {
+  const requestKey = generateReqKey(config);
+  if (pendingRequest.has(requestKey)) {
+    const cancel = pendingRequest.get(requestKey);
+    cancel(requestKey);
+    pendingRequest.delete(requestKey);
+  }
+}
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
@@ -13,6 +45,8 @@ const service = axios.create({
 
 service.interceptors.request.use(
   config => {
+    removePendingRequest(config); // 检查是否存在重复请求，若存在则取消已发的请求
+    addPendingRequest(config); // 把当前请求添加到pendingRequest对象中
     if (getLocalStorage(cacheNameDataFun().userInfo)) {
       config.headers['userName'] = getLocalStorage(cacheNameDataFun().userInfo).username || ''
       config.headers['token'] = getToken() || getTokenTemporary() || ''
@@ -27,6 +61,7 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   response => {
+    removePendingRequest(response.config); // 从pendingRequest对象中移除请求
     // console.log(response)
     const res = response.data
     const urlArr = response.config.url.split('/')
@@ -58,6 +93,7 @@ service.interceptors.response.use(
     return res
   },
   error => {
+    removePendingRequest(error.config || {}); // 从pendingRequest对象中移除请求
     if ( String(error).indexOf('401') !== -1) {
       removeToken()
       Notification({
